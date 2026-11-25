@@ -31,4 +31,16 @@ public class Transaction {
     public String getType() {
         return type;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

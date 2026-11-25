@@ -19,9 +19,16 @@ public class SavingsAccount extends Account implements InterestBearing {
     @Override
     public void payInterest() {
 
-        double interest = calculateInterest();
-        balance += interest;
+       double interest = calculateInterest();
+       balance += interest;
 
-        System.out.println("Interest paid: BWP" + interest);
+       transactions.add(new Transaction(
+            java.util.UUID.randomUUID().toString(),
+            "INTEREST",
+            interest,
+            "Monthly interest paid"
+        ));
+
+       System.out.println("Interest paid: BWP" + interest);
     }
 }

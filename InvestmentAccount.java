@@ -6,10 +6,10 @@ public class InvestmentAccount extends Account implements InterestBearing {
         super(accountNumber, 0, branch, customer);
 
         if (initialDeposit < 500) {
-            throw new IllegalArgumentException(
-                "Investment account requires at least BWP500."
-            );
-        }
+           throw new IllegalArgumentException(
+              "Investment account requires at least BWP500."
+           );
+     }
 
         balance = initialDeposit;
     }
@@ -44,6 +44,13 @@ public class InvestmentAccount extends Account implements InterestBearing {
         double interest = calculateInterest();
         balance += interest;
 
-        System.out.println("Interest paid: BWP" + interest);
+        transactions.add(new Transaction(
+            java.util.UUID.randomUUID().toString(),
+            "INTEREST",
+            interest,
+            "Monthly interest paid"
+       ));
+
+       System.out.println("Interest paid: BWP" + interest);
     }
 }
