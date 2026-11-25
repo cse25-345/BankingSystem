@@ -34,5 +34,53 @@ public class Main {
 
         System.out.println("Total transactions: " +
                 account.getTransactions().size());
+
+        SavingsAccount savings = new SavingsAccount(
+            "S001", 2000, "Gaborone Branch", customer
+        );
+
+        customer.addAccount(savings);
+
+        System.out.println("\n--- Savings Account Test ---");
+
+        System.out.println("Initial balance: BWP" + savings.getBalance());
+
+        savings.payInterest();
+
+        System.out.println("Balance after interest: BWP" + savings.getBalance());
+
+        savings.withdraw(100);
+
+        System.out.println("Balance after attempted withdrawal: BWP" + savings.getBalance());
+
+        ChequeAccount cheque = new ChequeAccount(
+           "C001", 3000, "Gaborone Branch", customer,
+           "ABC Company", "Gaborone"
+        );
+
+        customer.addAccount(cheque);
+
+        System.out.println("\n--- Cheque Account Test ---");
+
+        System.out.println("Initial balance: BWP" + cheque.getBalance());
+
+        cheque.deposit(500);
+
+        System.out.println("After deposit: BWP" + cheque.getBalance());
+
+        cheque.withdraw(200);
+
+        System.out.println("After withdrawal: BWP" + cheque.getBalance());
+
+        System.out.println("\n--- Employment Details Test ---");
+
+        try {
+            ChequeAccount invalidCheque = new ChequeAccount(
+                "C002", 3000, "Gaborone Branch", customer,
+                "", ""
+            );
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
