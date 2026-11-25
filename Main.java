@@ -15,18 +15,24 @@ public class Main {
 
         customer.addAccount(investment);
 
-        System.out.println("Initial balance: BWP" + investment.getBalance());
+        Account account = investment;
 
-        investment.deposit(500);
-        System.out.println("After deposit: BWP" + investment.getBalance());
+        System.out.println("Initial balance: BWP" + account.getBalance());
 
-        investment.withdraw(200);
-        System.out.println("After withdrawal: BWP" + investment.getBalance());
+        account.deposit(500);
+        account.deposit(200, "Additional deposit");
 
-        investment.payInterest();
-        System.out.println("After interest: BWP" + investment.getBalance());
+        System.out.println("After deposits: BWP" + account.getBalance());
+
+        account.withdraw(200);
+        System.out.println("After withdrawal: BWP" + account.getBalance());
+
+        InterestBearing interestAccount = investment;
+        interestAccount.payInterest();
+
+        System.out.println("After interest: BWP" + account.getBalance());
 
         System.out.println("Total transactions: " +
-                investment.getTransactions().size());
+                account.getTransactions().size());
     }
 }

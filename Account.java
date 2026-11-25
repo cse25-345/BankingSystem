@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,16 +22,23 @@ public abstract class Account {
     }
 
     public void deposit(double amount) {
+        deposit(amount, "Money deposited");
+    }
+
+    public void deposit(double amount, String description) {
 
         if (amount > 0) {
             balance += amount;
 
             transactions.add(new Transaction(
                 UUID.randomUUID().toString(),
-                "DEPOSIT", amount, "Money deposited"
+                "DEPOSIT",
+                amount,
+                description
             ));
 
             System.out.println("Deposit successful.");
+
         } else {
             System.out.println("Invalid deposit amount.");
         }
